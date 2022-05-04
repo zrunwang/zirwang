@@ -1,0 +1,230 @@
+
+#include<iostream>
+#include<ctime>
+#include<stdlib.h>
+#include<fstream>
+using namespace std;
+int srand(int);
+int main()
+{
+    srand((unsigned int)time(0));
+    int inmain;
+    float A[1000];
+    float B[1000];
+    float C[1000];
+    float D[1000];
+    int num;
+    char a;
+    int file;
+    cout << "请选择你想要哪种运算？" << endl
+        << "1  为十以内加法运算；" << endl
+        << "2  为十以内减法运算；" << endl
+        << "3  为十以内乘法运算;" << endl
+        << "4  为十以内除法运算；" << endl
+        << "5  为百以内加法运算；" << endl
+        << "6  为百以内减法运算；" << endl
+        << "7  为百以内乘法运算;" << endl
+        << "8  为百以内除法运算；" << endl
+        << "9  为多元混合型运算；" << endl
+        << "10 为十以内小数运算；" << endl
+        << "11 为百以内小数运算；" << endl
+        << "0     退出程序       " << endl;
+
+    cin >> inmain;
+    if (inmain == 0)
+    {
+        cout << "谢谢使用" << endl;
+        exit(0);
+    }
+    cout << "请输入出题数量：" << endl;
+    cin >> num;
+    cout << "题目是否需要打印？ 1是，0否！" << endl;
+    cin >> file;
+    ofstream fout;
+    if (file == 1)
+    {
+        fout.open("四则运算.txt");
+        fout << num << "道四则运算题如下：" << endl;
+
+    }
+    else
+    {
+        cout << num << "道四则运算题如下：" << endl;
+    }
+    switch (inmain)
+    {
+    case 1:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 10;
+            B[i] = rand() % 10;
+            fout << A[i] << "+" << B[i] << "=" << endl;
+            cout << A[i] << "+" << B[i] << "=" << endl;
+        }break;
+    case 2:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 10;
+            B[i] = rand() % 10;
+            cout << A[i] << "-" << B[i] << "=" << endl;
+            fout << A[i] << "-" << B[i] << "=" << endl;
+        }break;
+    case 3:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 10;
+            B[i] = rand() % 10;
+            cout << A[i] << "*" << B[i] << "=" << endl;
+            fout << A[i] << "*" << B[i] << "=" << endl;
+        }break;
+    case 4:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = (rand() % 10) + 1;
+            B[i] = (rand() % 10) + 1;
+            cout << A[i] << "/" << B[i] << "=" << endl;
+            fout << A[i] << "/" << B[i] << "=" << endl;
+        }break;
+    case 5:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 100;
+            B[i] = rand() % 100;
+            cout << A[i] << "+" << B[i] << "=" << endl;
+            fout << A[i] << "+" << B[i] << "=" << endl;
+
+        }break;
+    case 6:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 100;
+            B[i] = rand() % 100;
+            cout << A[i] << "-" << B[i] << "=" << endl;
+            fout << A[i] << "-" << B[i] << "=" << endl;
+
+        }break;
+    case 7:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 100;
+            B[i] = rand() % 100;
+            cout << A[i] << "*" << B[i] << "=" << endl;
+            fout << A[i] << "*" << B[i] << "=" << endl;
+
+        }break;
+    case 8:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = (rand() % 100) + 1;
+            B[i] = (rand() % 100) + 1;
+            cout << A[i] << "/" << B[i] << "=" << endl;
+            fout << A[i] << "/" << B[i] << "=" << endl;
+
+        }break;
+    case 9:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = rand() % 100;
+            B[i] = rand() % 100;
+            C[i] = rand() % 100;
+            D[i] = rand() % 100;
+            if (i % 2 == 0)
+            {
+                cout << A[i] << "*" << "(" << B[i] << "-" << C[i] << ")" << "+" << D[i] << endl;
+                fout << A[i] << "*" << "(" << B[i] << "-" << C[i] << ")" << "+" << D[i] << endl;
+            }
+            else if (i % 3 == 0)
+            {
+                cout << A[i] << "+" << B[i] << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+                fout << A[i] << "+" << B[i] << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+            }
+            else if (i % 5 == 0)
+            {
+                cout << "(" << A[i] << "+" << B[i] << ")" << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+                fout << "(" << A[i] << "+" << B[i] << ")" << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+            }
+            else if (i % 7 == 0)
+            {
+                cout << A[i] << "+" << "(" << B[i] << "-" << C[i] << ")" << "/" << D[i] << endl;
+                fout << A[i] << "+" << "(" << B[i] << "-" << C[i] << ")" << "/" << D[i] << endl;
+            }
+            else
+            {
+                cout << A[i] << "/" << "(" << B[i] << "-" << C[i] << ")" << "*" << D[i] << endl;
+                fout << A[i] << "/" << "(" << B[i] << "-" << C[i] << ")" << "*" << D[i] << endl;
+            }
+        }break;
+    case 10:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = (rand() % 100) / 10.0 + 1;
+            B[i] = (rand() % 100) / 10.0 + 1;
+            C[i] = (rand() % 100) / 10.0 + 1;
+            D[i] = (rand() % 100) / 10.0 + 1;
+            if (i % 2 == 0)
+            {
+                cout << A[i] << "*" << B[i] << "-" << C[i] << "+" << D[i] << endl;
+                fout << A[i] << "*" << B[i] << "-" << C[i] << "+" << D[i] << endl;
+            }
+            else if (i % 3 == 0)
+            {
+                cout << A[i] << "+" << B[i] << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+                fout << A[i] << "+" << B[i] << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+            }
+            else if (i % 5 == 0)
+            {
+                cout << A[i] << "+" << B[i] << "*" << C[i] << "-" << D[i] << endl;
+                fout << A[i] << "+" << B[i] << "*" << C[i] << "-" << D[i] << endl;
+            }
+            else if (i % 7 == 0)
+            {
+                cout << A[i] << "+" << "(" << B[i] << "-" << C[i] << ")" << "/" << D[i] << endl;
+                fout << A[i] << "+" << "(" << B[i] << "-" << C[i] << ")" << "/" << D[i] << endl;
+            }
+            else
+            {
+                cout << A[i] << "/" << "(" << B[i] << "-" << C[i] << ")" << "*" << D[i] << endl;
+                fout << A[i] << "/" << "(" << B[i] << "-" << C[i] << ")" << "*" << D[i] << endl;
+            }
+        }break;
+    case 11:
+        for (int i = 0; i < num; ++i)
+        {
+            A[i] = (rand() % 1000) / 10.0 + 1;
+            B[i] = (rand() % 1000) / 10.0 + 1;
+            C[i] = (rand() % 1000) / 10.0 + 1;
+            D[i] = (rand() % 1000) / 10.0 + 1;
+            if (i % 2 == 0)
+            {
+                cout << A[i] << "*" << "(" << B[i] << "-" << C[i] << ")" << "+" << D[i] << endl;
+                fout << A[i] << "*" << "(" << B[i] << "-" << C[i] << ")" << "+" << D[i] << endl;
+            }
+            else if (i % 3 == 0)
+            {
+                cout << A[i] << "+" << B[i] << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+                fout << A[i] << "+" << B[i] << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+            }
+            else if (i % 5 == 0)
+            {
+                cout << "(" << A[i] << "+" << B[i] << ")" << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+                fout << "(" << A[i] << "+" << B[i] << ")" << "*" << "(" << C[i] << "-" << D[i] << ")" << endl;
+            }
+            else if (i % 7 == 0)
+            {
+                cout << A[i] << "+" << "(" << B[i] << "-" << C[i] << ")" << "/" << D[i] << endl;
+                fout << A[i] << "+" << "(" << B[i] << "-" << C[i] << ")" << "/" << D[i] << endl;
+            }
+            else
+            {
+                cout << A[i] << "/" << "(" << B[i] << "-" << C[i] << ")" << "*" << D[i] << endl;
+                fout << A[i] << "/" << "(" << B[i] << "-" << C[i] << ")" << "*" << D[i] << endl;
+            }
+        }break;
+    }
+    if (file == 1)
+    {
+        fout.close();
+    }
+    return 0;
+
+}
